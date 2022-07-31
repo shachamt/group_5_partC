@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block jsLink %}
+    <script defer src="../../../static/js/general.js"></script>{% endblock %}
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <main class="aboutUs home">
+        <center>
+            {% if session['logedin'] %}
+                <h3 style="color: rgb(136, 64, 86);">Welcome, {{ session['firstName'] | capitalize() }} </h3>
+            {% endif %}
+
+        </center>
+
+        <h3>About Us </h3>
+        <div id="text">
+            <p>We offer you a new platform of connecting between manicurists and clients. </p><br>
+            <p>If you are looking for a new manicurist - this place is for you.</p><br>
+            <p>If you are a professional manicurist and wants to increase your recognition - join us! </p>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block jsLink %}
+
+    <script defer src="../../../static/js/general.js"></script>
+    <script defer src="../../../static/js/GetLocation.js"></script>
+    <script defer src="../../../static/js/SearchMani.js"></script>
+
+{% endblock %}
+{% block title %}Search Manicurist{% endblock %}
+
+{% block content %}
+<main class="aboutUs search">
+    <div id="searchText">
+        <div id="headtitle">
+        <h2 >Search Manicurist </h2>
+    </div>
+    <form method="post" action="/search_mani_validation">
+        <div class="content">
+            <img id="Searchlocaion" src="../static/location4.png" alt="">
+            <label id="LatitudeLabel" for="Latitude">Latitude: </label>
+            <input type="text" id="Latitude" name="Latitude" class="inputs" onkeydown="return false;" required>
+            <p></p>
+            <label for="Longitude">Longitude: </label>
+            <input type="text" id="Longitude" name="Longitude" class="inputs" onkeydown="return false;" required>
+            <p></p>
+            <button type="button" id="buttonLocationSearch" onclick="GetLocationMani()">Find my location</button>
+            <p id="p1"></p>
+            <p id="submitted"></p>
+
+        </div>
+        <div id="price-section">
+            <label for="pricerange" class="titels">Max Price</label> <br>
+            <input type="range" id="pricerange" name="pricerange" min="40" max="200"> <span>40</span>
+            <br>
+        </div>
+        <button id="search-section" > <a>Search</a> </button>
+    </form>
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}

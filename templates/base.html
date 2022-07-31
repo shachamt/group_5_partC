@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    {% block jsLink %} {% endblock %}
+    <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+    <div class="gridContainer home">
+        {% include 'header.html' %}
+        <div class="PageImage Home"></div>
+
+        {% block content %}
+
+        <main class="aboutUs home">
+            <h3>About Us </h3>
+            <div id="text">
+                <p>We offer you a new platform of connecting between manicurists and clients. </p><br>
+                <p>If you are looking for a new manicurist - this place is for you.</p><br>
+                <p>If you are a professional manicurist and wants to increase your recognition - join us! </p>
+            </div>
+        </main>
+        {% endblock %}
+
+        {% include 'footer.html' %}
+
+    </div>
+</body>
+
+</html>

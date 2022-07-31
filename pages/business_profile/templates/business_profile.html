@@ -1,0 +1,77 @@
+{% extends 'business_base.html' %}
+{% block jsLink %}
+    <script defer src="../../../static/js/general.js"></script>
+{% endblock %}
+{% block title %}Business Profile{% endblock %}
+
+{% block left %}
+    <fieldset class="MyBusinessField">
+        <table>
+            <h1 id="priceList">{{ name }}'s menu:</h1>
+            <tr>
+                <td class="tableHeader"> Service</td>
+                <td class="tableHeader"> &#8362</td>
+            </tr>
+            {% for service in services %}
+                <tr>
+                    <td><h4>{{ service.serviceName }}</h4>
+                        <br></td>
+                    <td><h4>{{ service.Price }}</h4><br></td>
+                </tr>
+            {% endfor %}
+
+
+        </table>
+        <button class="sandMani" type="button" onclick="sandMani()"> Click here to send details to
+            {{ name }}
+        </button>
+    </fieldset>
+
+{% endblock %}
+{% block up %}
+    <fieldset class="MyBusinessField">
+        <h1>About {{ name }}:</h1><br>
+        <p> {{ aboutMe }}</p>
+    </fieldset>
+{% endblock %}
+
+{% block right %}
+    <div class="navDisplay1">
+        <div class="MyImg">
+            <img src={{ images[0][0] }}>
+            <span class="spanStyle"></span>
+        </div>
+        <div class="MyImg">
+            <img src={{ images[1][0] }}>
+            <span class="spanStyle"></span>
+        </div>
+    </div>
+    <div class="navDisplay1">
+        <div class="MyImg">
+            <img src={{ images[2][0] }}>
+            <span class="spanStyle"></span>
+        </div>
+
+        <div class="MyImg">
+            <img src={{ images[3][0] }}>
+            <span class="spanStyle"></span>
+        </div>
+    </div>
+
+    <form action="/business_edit">
+        <button id="editProfile"><a>Edit Profile</a></button>
+    </form>
+
+    <div id="rateDiv">
+        <h2>Rate {{ name }} Here!</h2>
+
+        <form action="/rating">
+            <output>My avg rate is : {{ rate }}</output>
+
+            <input type="int" id="Rate" name="Rate" min="0" max="5" required>
+            <button id="search-section"><a>Rate</a></button>
+        </form>
+
+    </div>
+
+{% endblock %}

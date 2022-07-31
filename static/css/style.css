@@ -1,0 +1,768 @@
+/*_____All_____*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: myFirstFont;
+
+}
+
+body {
+	background-color: white;
+	height: 100%;
+
+}
+
+.active {
+	color: rgb(136, 64, 86);
+}
+
+@font-face {
+	font-family: myFirstFont;
+	src: url(../../static/media/Poppins/Poppins-Regular.ttf);
+}
+
+
+/*_____Header_____*/
+header {
+	grid-area: header;
+	position: sticky;
+	background-color: #f7dbd0;
+	top: 0;
+	grid-area: header;
+	box-shadow: 0 0 0.5vh black;
+
+}
+
+header nav a {
+	text-decoration: none;
+	font-size: 1.6vw;
+
+
+}
+
+header nav {
+	padding: 5px;
+	text-align: center;
+
+	height: 16vh;
+	width: 100%;
+
+}
+
+
+header nav li {
+	display: inline;
+
+
+
+}
+
+header nav ul {
+	margin-top: 2vh;
+	animation-name: nav-link-load;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in;
+    animation-delay: 300ms;
+    animation-fill-mode: forwards;
+    transform: scale(0);
+
+
+}
+
+header nav li a {
+	color: black;
+	text-decoration: none;
+	margin: 3vw;
+	font-size: 2.3vw;
+	margin-top: 50px;
+	margin-left: 0;
+
+}
+
+header nav li a:hover {
+	color: white;
+}
+
+#logo {
+	float: left;
+	height: 18vh;
+	margin-top: -6vh;
+
+}
+
+@keyframes nav-link-load {
+    0% {
+        transform: scale(0);
+    }
+
+    90% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*_____Footer_____*/
+
+footer {
+	grid-area: footer;
+	background-color: #f7dbd0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+
+}
+
+.socials {
+	padding-top: 2vh;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 4vh;
+}
+
+.socials li {
+	margin-bottom: 1vh;
+	margin-left: 3vh;
+	margin-right: 3vh;
+}
+
+.socials a {
+	color: #fff;
+}
+
+.socials a i {
+	font-size: 5vh;
+}
+
+.socials a:hover i {
+	color: #24262b;
+}
+
+footer h3 {
+	padding-top: 3vh;
+}
+
+
+/*_____General Button_____*/
+
+button {
+	border-radius: 3.5vh;
+	border-color: #fff;
+	background-color: rgb(180, 76, 76);
+	border: none;
+	outline: none;
+	font-size: 3vh;
+	letter-spacing: 0.3vh;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+
+button:hover {
+	background-size: 50vh;
+	background: linear-gradient(90deg, #f7dbd0, rgb(187, 90, 90), rgb(230, 151, 151), #f7dbd0);
+	background-size: 400%;
+	animation: glow 8s linear infinite;
+}
+
+@keyframes glow {
+	0% {
+		background-position: 0%;
+	}
+
+	100% {
+		background-position: 400%;
+	}
+}
+
+/*_____sign pages, search, home - grid_____*/
+
+.PageImage {
+	grid-area: img;
+	background-size: cover;
+	background-image: url(../../static/media/nails1.jpg);
+}
+
+
+.gridContainer {
+	display: grid;
+	height: 150vh;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 0.5fr 2fr 2fr 1fr;
+	grid-template-areas:
+		"header  header header"
+		"img  main main"
+		"img  main main"
+		"footer  footer footer";
+}
+
+.aboutUs {
+	grid-area: main;
+	background-color: #F3F4F2;
+}
+
+/*_____Home_____*/
+
+.aboutUs h3 {
+	margin-top: 2%;
+	font-size: 150%;
+	text-align: left;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	margin-left: 3%;
+}
+
+#text {
+	margin-top: 2%;
+	font-size: 120%;
+	text-align: left;
+	color: rgb(0, 0, 0);
+	font-weight: inherit;
+	margin-left: 3%;
+}
+
+/*_____sign up Manicurist_____*/
+
+
+.SignUpForm {
+	margin: 3vh 0;
+}
+
+.SignUpForm fieldset {
+	margin: 1vw;
+	padding: 2vw;
+	border: solid 0.1vw rgb(230, 151, 151);
+	border-radius: 20px;
+	width: 90%;
+	margin-left: 5vw;
+
+}
+
+label {
+	font-size: 4vh;
+	display: inline;
+	margin-top: 1vw;
+	width: 20vw;
+	margin-left: 5%;
+}
+
+input {
+	padding: 0.2vw;
+	height: 3.5vh;
+	border: solid 0.2vh black;
+	width: 9vw;
+	margin: 2vh;
+}
+
+.inputs {
+	border: solid 0.2vh black;
+	width: 20%;
+
+}
+
+#email {
+	width: 28%;
+}
+
+#email1 {
+	width: 28%;
+
+}
+
+.SignButton {
+	float: right;
+	width: 25%;
+	height:7vh;
+	font-size: 80%;
+}
+
+
+#buttonLocationMani {
+	display: inline;
+	float: right;
+	width: 25%;
+	height:7vh;
+	font-size: 80%;
+}
+
+/*___Sign in___*/
+
+
+#SignInForm {
+	margin: 20% 0;
+}
+
+#SignInForm fieldset {
+	margin: 1vw;
+	padding: 2vw;
+	border: solid 0.1vw rgb(230, 151, 151);
+	border-radius: 20px;
+	width: 90%;
+	margin-left: 5vw;
+}
+
+#hide1 {
+	display: none;
+}
+
+input::-webkit-inner-spin-button {
+	/*hide arrows in number type*/
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+#password {
+	width: 20%;
+}
+
+/*_____Business profile_____*/
+
+.gridContainerB {
+	display: grid;
+	height: 130vh;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 0.5fr 2fr 2fr 1fr;
+	grid-template-areas:
+		"header  header "
+		"aboutB aboutB "
+		"menuB  picsB "
+		"footer  footer";
+}
+
+
+#star1 { /*we will show the right stars with JS when we have DB */
+	display: auto;
+}
+#star2 {
+	display: auto;
+}
+#star3 {
+	display: auto;
+}
+#star4 {
+	display: none;
+}
+#star5 {
+	display: none;
+	border: 5px solid black;
+}
+
+#rateDiv {
+	margin: 8%;
+	align-items: center;
+
+}
+#rateBtn {
+	display: block;
+	margin: 2%;
+	width: 25%;
+}
+
+
+
+.menuBusiness {
+	grid-area: menuB;
+	justify-content: center;
+}
+
+.aboutMenicurist {
+	grid-area: aboutB;
+	justify-content: center;
+}
+
+.MenicuristPics {
+	grid-area: picsB;
+	margin-left: 40%;
+	margin-top: 10vh ;
+	justify-content: center;
+}
+
+.navDisplay1 {
+	display: flex;
+	justify-content: center;
+	margin: 4%;
+}
+
+.spanStyle {
+	display: block;
+	font-size: 130%;
+}
+
+.MyImg {
+	margin-left: 2vw;
+	margin-right: 2vw;
+
+}
+
+fieldset h1 {
+	color: rgb(230, 151, 151);
+}
+
+.MyBusinessField {
+	margin: 1vw;
+	padding: 2vw;
+	border: solid 0.1vw rgb(230, 151, 151);
+	border-radius: 20px;
+	margin-left: 3vw;
+	margin-top: 7vh;
+
+}
+
+.sandMani {
+
+	width: auto;
+	margin-left: 2vw;
+	margin-bottom: 5vh;
+	margin-top: 2vh;
+	padding: 2vh;
+
+}
+
+#editProfile {
+	margin-left: 0;
+	width: 30%;
+}
+
+#editProfile a {
+	text-decoration: none;
+	color: black;
+}
+
+
+
+.MenicuristPics img {
+	width: 15vw;
+	height: 15vw;
+	padding: 2%;
+	margin-top: 1%;
+	border-radius: 10%;
+}
+
+@media only screen and (max-width: 700px) {
+	.gridContainerB {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+
+		grid-template-areas:
+			"header "
+			"menuB"
+			"aboutB"
+			"picsB"
+			"footer";
+	}
+
+}
+/*_____Search_____*/
+
+
+#searchText {
+	margin-top: 2%;
+	font-size: 120%;
+	text-align: left;
+	color: rgb(0, 0, 0);
+	font-weight: inherit;
+	margin-left: 10%;
+}
+
+
+#locate { /*find location button*/
+	display: inline;
+	width: auto;
+	font-size: 70%;
+	border-radius: 15px;
+	padding: 2%;
+}
+
+
+#search-section {
+	display: inline;
+	width: auto;
+	font-size: 80%;
+	border-radius: 15px;
+	padding: 2%;
+	margin-bottom: 5%;
+}
+#search-section a {
+	text-decoration: none;
+	color:black
+}
+
+#servicetype {
+	height: 7vh;
+	margin-top: 1vh
+}
+
+
+#servicetype:hover {
+	box-shadow: inset 300px 0 0 0 #eed3c9;
+}
+
+.BusinessProfile {
+	grid-area: img;
+	background-size: cover;
+	background-image: url(../static/nails1.jpg);
+
+}
+
+.titels {
+	margin-left: auto;
+
+}
+
+
+#Searchlocaion {
+	width: 10%;
+}
+
+#location-section {
+	margin-left: -4vh;
+}
+
+#type-section {
+	margin-top: 3vh;
+}
+
+#price-section {
+	margin-top: 3vh;
+}
+
+#pricerange {
+	margin-left: 0vh;
+}
+
+
+#buttonLocationSearch {
+	display: inline;
+	width: 25%;
+	height:7vh;
+	font-size: 80%;
+}
+
+
+/* results page */
+.gridContainerR {
+	display: grid;
+	height: 160vh;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 0.5fr 2fr 2fr 0.5fr;
+	grid-template-areas:
+		"header  header header"
+		"img  main main"
+		"img  main main"
+		"footer  footer footer";
+}
+
+
+#homePageNav {
+    display: block;
+    margin-top: 3%;
+    margin-bottom: 0 auto;
+    color: black;
+    text-align: center;
+    height: 55vh;
+	margin-left: 30%;
+
+}
+#resultsContainer{
+	grid-area: main;
+}
+#resultsContainer h3{
+
+	text-align: center;
+	font-size: 200%;
+}
+
+#homePageNav p {
+    margin-left: 1%;
+    font-weight: bold;
+    font-size: 200%;
+    margin-top: 1%;
+    text-align: left;
+    color: black;
+
+}
+
+.navDisplay1 {
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+    margin-right: 56%;
+}
+
+.option {
+    padding : 10%;
+}
+
+.link {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 5%;
+}
+
+.spanStyle {
+	margin: 5%;
+    display: block;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+
+/* editing business profile */
+
+
+table {
+	text-align: left;
+	width: 40vw;
+}
+
+#editTable {
+	text-align: left;
+	width: 67vw;
+}
+
+td li {
+	margin-left: 0;
+	margin-left: 0;
+	text-align: left;
+	display: inline;
+	width: 5vw;
+}
+td input  {
+	display: inline;
+}
+
+#priceList {
+	margin-top: 1%;
+	font-size: 40px;
+}
+
+.tableHeader {
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: underline;
+}
+
+.service {
+	width: 30vw;
+	height: 5vh;
+}
+#service2{
+	width: 15vw;
+	float: right;
+}
+#price2{
+	width: 5vw;
+
+}
+.price {
+	width: 10.6vw;
+	height: 5vh;
+
+}
+#editService{
+	font-size: 2vh;
+	width: 5vw;
+	height: 5vh;
+}
+.invalidInput {
+	background-color: 	rgb(230, 151, 151);
+
+}
+
+#description {
+	width: 100%;
+	height: 10vh;
+}
+
+textarea {
+	resize: none;
+	height: 75vh;
+}
+
+#update {
+
+	width: 18vw;
+	margin-top: 0.5%;
+	margin-bottom: 2%;
+	margin-left: -10%;
+	padding: 2vh;
+
+}
+
+
+#uploadPic {
+	grid-area: picsB;
+	margin-left: 40%;
+	margin-top: 10vh ;
+	margin-top: 4%;
+
+}
+
+#uploadPic input {
+	width: 15vw;
+	height: 15vw;
+	padding: 2%;
+	margin-top: 1%;
+	border-radius: 10%;
+	border: solid 0.1vw rgb(230, 151, 151);
+}
+
+
+/*_____sign pages, search, home - media_____*/
+@media only screen and (max-width: 760px) {
+	#update {
+
+		width: 24vw;
+		margin-top: 0.5%;
+		margin-bottom: 2%;
+		margin-left: 0;
+		padding: 2vh;
+
+	}
+
+	.PageImage {
+		grid-area: img;
+		background-image: none;
+
+	}
+
+	.gridContainer {
+		display: grid;
+		height: 100vh;
+		grid-template-columns: 1fr;
+		grid-template-rows: 0.5fr 2fr 2fr;
+		grid-template-areas:
+			"header "
+			"main "
+			"footer";
+	}
+
+	.home {
+
+		grid-template-rows: 0.5fr 6fr 2fr;
+
+
+	}
+
+	#email {
+		width: 35%;
+	}
+
+	#email1 {
+		width: 35%;
+
+	}
+
+	#password {
+		width: 28%;
+	}
+
+
+}

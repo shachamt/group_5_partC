@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block jsLink %}
+    <script defer src="../../../static/js/general.js"></script>
+    <script defer src="../../../static/js/GetLocation.js"></script>
+    <script defer src="../../../static/js/SearchMani.js"></script>
+    <script defer src="../../../static/js/validation.js"></script>
+
+{% endblock %}
+{% block title %}Sign Up Manicurist{% endblock %}
+
+{% block content %}
+    <main class="aboutUs sidnUpCustomer">
+        <form id="SignUpCustomerForm" class="SignUpForm" action="/commit_sign_up" method="post">
+            <fieldset>
+                {% if message %}
+                    <h3 style="color: red">{{ message }}</h3>
+                {% endif %}
+                <label id="email" for="email"> Email: </label>
+                <input type="email" name="email" id="email1" class="inputs" required>
+                <p></p>
+
+                <label for="firstName">First Name: </label>
+                <input type="text" id="firstName" name="firstName" class="inputs" required>
+                <p></p>
+
+                <label for="lastName">Last Name: </label>
+                <input type="text" id="lastName" name="lastName" class="inputs" required>
+                <p></p>
+
+                <label for="telephone">Phone Number: </label>
+                <input type="number" name="telephone" id="telephone" class="inputs" required min="0"
+                       oninput="validity.valid||(value='');">
+                <p></p>
+
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" class="inputs" required>
+                <span class="eye" onclick="showPassword()">
+                <i id="hide1" class="fa-solid fa-eye"></i>
+                <i id="hide2" class="fa-solid fa-eye-slash"></i>
+            </span>
+                <div id="errorCustomer"></div>
+
+                <p></p>
+
+                <button type="submit" id="SignUpButton" class="SignButton">Sign Up</button>
+            </fieldset>
+        </form>
+    </main>
+
+{% endblock %}

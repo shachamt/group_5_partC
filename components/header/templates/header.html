@@ -1,0 +1,17 @@
+<header>
+    <nav>
+        <a href="/sign_up_mani">Manicurist ? Sign Up </a> &nbsp &nbsp
+        <a href="/sign_up_customer">Customer ? Sign Up </a>
+        {% if session['logedin'] %}
+            <a style="font-size: medium;color: #24262b; padding: 3%; font-weight: bold" href="/logOut"> Log Out</a>
+        {% endif %}
+        <ul>
+            <img src="../../../static/media/Logo.jpeg" id="logo">
+            <li><a href="/homepage">Home Page new</a></li>
+            <li><a href="/sign_in"> Sign In</a></li>
+            <li><a href="/search_mani"> Find Manicurist</a></li>
+            <li><a href="/business_profile"> Business Profile </a></li>
+        </ul>
+
+    </nav>
+</header>

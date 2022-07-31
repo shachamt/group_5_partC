@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block jsLink %}
+    <script defer src="../../../static/js/general.js"></script>
+    <script defer src="../../../static/js/GetLocation.js"></script>
+    <script defer src="../../../static/js/SearchMani.js"></script>
+
+{% endblock %}
+{% block title %}Sign Up Manicurist{% endblock %}
+
+{% block content %}
+    <main class="aboutUs signUpMani">
+        <form id="SignUpManicuristForm" class="SignUpForm" action="/commit_sign_up_mani" method="post">
+            <fieldset>
+                {% if message %}
+                    <h3 style="color: red">{{ message }}</h3>
+                {% endif %}
+
+                <label for="email"> Email: </label>
+                <input type="email" name="email" id="email" class="inputs" required>
+                <p></p>
+
+                <label for="firstName">First Name: </label>
+                <input type="text" id="firstName" name="firstName" class="inputs" required>
+                <p></p>
+
+                <label for="lastName">Last Name: </label>
+                <input type="text" id="lastName" name="lastName" class="inputs" required>
+                <p></p>
+
+                <label for="businessName">businessName: </label>
+                <input type="text" id="businessName" name="businessName" class="inputs" required>
+                <p></p>
+
+                <label for="telephone">Phone Number: </label>
+                <input type="number" name="telephone" id="telephone" class="inputs" required min="0"
+                       oninput="validity.valid||(value='');">
+                <p></p>
+
+
+                <label id="LatitudeLabel" for="Latitude">Latitude: </label>
+                <input type="text" id="Latitude" name="Latitude" class="inputs" required readonly="readonly">
+                <p></p>
+
+                <button type="button" id="buttonLocationMani" onclick="GetLocationMani()">Find my location</button>
+
+                <label for="Longitude">Longitude: </label>
+                <input type="text" id="Longitude" name="Longitude" class="inputs" required readonly="readonly">
+                <p></p>
+
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password" class="inputs" required>
+                <span class="eye" onclick="showPassword()">
+                <i id="hide1" class="fa-solid fa-eye"></i>
+                <i id="hide2" class="fa-solid fa-eye-slash"></i>
+            </span>
+                <div id="errorMani"></div>
+
+                <p></p>
+
+                <button type="submit" id="signUpButton" class="SignButton">Sign Up</button>
+            </fieldset>
+        </form>
+    </main>
+
+
+{% endblock %}
