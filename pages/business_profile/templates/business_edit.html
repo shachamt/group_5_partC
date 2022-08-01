@@ -39,9 +39,27 @@
                     </form>
 
                 </tr>
+
             {% endfor %}
         </table>
+<h1 id="priceList">New Service 💅🏻</h1>
+                <form method="post" action="/business_add_service">
+                    <td>
 
+                        <input id="service2" name="newService"
+                               type="text" placeholder="service" required>
+                        <br></td>
+                    <td>
+
+                        <input id="price2" type="int" name="newprice"
+                               placeholder="price" min="40" max="200" required><br></td>
+                    <td>
+
+                        <button id="editService"><a>Add</a></button>
+                    </td>
+
+
+                </form>
     </fieldset>
 
 
@@ -63,5 +81,41 @@
 {% endblock %}
 
 {% block right %}
+    <div class="navDisplay1">
+        <form action="/pic1">
+            <div class="MyImg">
+                <img src={{ images[0][0] }}>
+                <span class="spanStyle"></span>
+            </div>
+            <input type="text" name="pic1">
+            <button id="editService"><a>Edit</a></button>
+        </form>
+        <form action="/pic2">
+            <div class="MyImg">
+                <img src={{ images[1][0] }}>
+                <span class="spanStyle"></span>
+            </div>
+            <input type="text" name="pic2">
+            <button id="editService"><a>Edit</a></button>
+        </form>
+    </div>
+    <div class="navDisplay1">
+        <form action="/pic3">
+            <div class="MyImg">
+                <img src={{ images[2][0] }}>
+                <span class="spanStyle"></span>
+            </div>
+            <input type="text" name="pic3">
+            <button id="editService"><a>Edit</a></button>
+        </form>
+        <form action="/pic4">
+            <div class="MyImg">
+                <img src={{ images[3][0] }}>
+                <span class="spanStyle"></span>
+            </div>
+            <input type="text" name="pic4">
+            <button id="editService"><a>Edit</a></button>
+        </form>
+    </div>
 
 {% endblock %}
