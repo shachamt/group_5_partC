@@ -15,7 +15,11 @@ class DynamicMani:
         self.ID = ID
         query_for_Email = f"select Email from dynamicmani where id='%s'" % ID
         cur_email = dbManager.fetch(query_for_Email)
-        self.email=cur_email[0]
+        if cur_email==[]:
+            self.email='null'
+            print(self.email)
+        else:
+            self.email=cur_email[0]
 
     def getEmail(self):
         return self.email

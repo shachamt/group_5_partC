@@ -25,13 +25,16 @@ def def_business_profile():
     images = newManicurist.getMyImages()
 
     return render_template('business_profile.html', services=users_list, name=manicurists[0][1],
-                           aboutMe=manicurists[0][8], images=images,rate=manicurists[0][9])
+                           aboutMe=manicurists[0][8], images=images,rate=manicurists[0][9], ismani= session['isMani'])
 
 
 @business_profile.route('/business_profile/<int:ID>')
 def def_business_profile_ByID(ID):
     newDynamic= DynamicMani(ID)
     email = newDynamic.getEmail() #email of manicurist
+    if email== 'null':
+        return render_template('IDnotFound.html')
+    print(email)
     session['currentMani']=email[0]
     newManicurist= manicurist(email,FirstName='',LastName='',PhoneNumber='',password='',businessName='',x_location='',y_location='')
     users_list = newManicurist.getServices()
@@ -40,7 +43,7 @@ def def_business_profile_ByID(ID):
     if session['isMani'] == True:
         return render_template('noProfileMessage.html')
     return render_template('business_profile.html', services=users_list, name=manicurists[0][1],
-                           aboutMe=manicurists[0][8], images=images,rate=manicurists[0][9])
+                           aboutMe=manicurists[0][8], images=images,rate=manicurists[0][9], ismani= session['isMani'])
 
 
 @business_profile.route('/business_edit')
@@ -52,7 +55,7 @@ def def_business_edit():
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
     return render_template('business_edit.html', services=users_list, name=manicurists[0][1],
-                           aboutMe=manicurists[0][8], images=images,rate=manicurists[0][9])
+                           aboutMe=manicurists[0][8], images=images,rate=manicurists[0][9], ismani= session['isMani'])
 
 
 @business_profile.route('/business_edit_about', methods=['get', 'post'])
@@ -70,7 +73,7 @@ def def_business_edit_AboutMe():
     else:
         message = "description is empty - please fill before submitting"
     return render_template('business_edit.html', services=users_list, name=manicurists[0][1],
-                           aboutMe=manicurists[0][8], images=images, message=message,rate=manicurists[0][9])
+                           aboutMe=manicurists[0][8], images=images, message=message,rate=manicurists[0][9], ismani= session['isMani'])
 
 
 @business_profile.route('/business_edit_service/<line>', methods=['get', 'post'])
@@ -111,7 +114,7 @@ def def_business_edit_service(line):
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
     return render_template('business_edit.html', services=currentServices, name=manicurists[0][1],
-                           aboutMe=manicurists[0][8], images=images, message=message,rate=manicurists[0][9])
+                           aboutMe=manicurists[0][8], images=images, message=message,rate=manicurists[0][9], ismani= session['isMani'])
 
 @business_profile.route('/rating')
 def def_rating():

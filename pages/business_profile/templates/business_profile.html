@@ -63,14 +63,15 @@
     </form>
 
     <div id="rateDiv">
-        <h2>Rate {{ name }} Here!</h2>
 
-        <form action="/rating">
             <output>My avg rate is : {{ rate }}</output>
-
+        {% if ismani==False %}
+        <form action="/rating">
+            <h2>Rate {{ name }} Here!</h2>
             <input type="int" id="Rate" name="Rate" min="0" max="5" required>
             <button id="search-section"><a>Rate</a></button>
         </form>
+    {% endif %}
 
     </div>
 
