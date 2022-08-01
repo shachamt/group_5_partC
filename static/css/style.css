@@ -246,7 +246,7 @@ button:hover {
 }
 
 label {
-	font-size: 4vh;
+	font-size: 3vh;
 	display: inline;
 	margin-top: 1vw;
 	width: 20vw;
@@ -255,10 +255,10 @@ label {
 
 input {
 	padding: 0.2vw;
-	height: 3.5vh;
+	height: 3vh;
 	border: solid 0.2vh black;
 	width: 9vw;
-	margin: 2vh;
+	margin: 1vh;
 }
 
 .inputs {
@@ -279,7 +279,7 @@ input {
 .SignButton {
 	float: right;
 	width: 25%;
-	height:7vh;
+	height:6vh;
 	font-size: 80%;
 }
 

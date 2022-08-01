@@ -4,6 +4,7 @@ import mysql.connector, requests
 import os
 from dotenv import load_dotenv
 
+from classes.images import Image
 from classes.manicurists import manicurist
 
 sign_up = Blueprint('sign_up', __name__, static_folder='static', static_url_path='/sign_up',
@@ -59,8 +60,23 @@ def def_sign_up_mani():
     x_location = request.form['Latitude']
     y_location = request.form['Longitude']
     businessName = request.form['businessName']
+    pic1=request.form['picture1']
+    pic2=request.form['picture2']
+    pic3=request.form['picture3']
+    pic4=request.form['picture4']
     loggedMani = manicurist(email, FirstName, LastName, PhoneNumber, password, businessName, x_location, y_location)
     isExist = loggedMani.add_mani()
+    if pic1.__eq__(pic2) |pic1.__eq__(pic3)|pic1.__eq__(pic4)|pic2.__eq__(pic3)|pic3.__eq__(pic4) | pic2.__eq__(pic4) :
+        message="there is duplicate pictures please try again"
+        return render_template('sign_up_mani.html', message=message)
+    im1=Image(pic1,email)
+    im2 = Image(pic2, email)
+    im3 = Image(pic3, email)
+    im4 = Image(pic4, email)
+    im1.addimage()
+    im2.addimage()
+    im3.addimage()
+    im4.addimage()
     if (isExist):
         session['email'] = email
         session['logedin'] = True
