@@ -17,11 +17,13 @@
             </tr>
 
             {% for service in services %}
+
                 <tr>
                     <form method="post" action="/business_edit_service/{{ loop.index }}">
                         <td>
                             <li>{{ service.serviceName }}</li>
-                            <input id="service2" name="currentService{{ loop.index }}" value="{{ service.serviceName }}"
+                            <input id="service2" name="currentService{{ loop.index }}"
+                                   value="{{ service.serviceName }}"
                                    type="hidden"> <input id="service2" type="text"
                                                          name="service{{ loop.index }}"
                                                          maxlngth="90"
@@ -38,28 +40,39 @@
 
                     </form>
 
+
                 </tr>
 
             {% endfor %}
         </table>
-<h1 id="priceList">New Service 💅🏻</h1>
-                <form method="post" action="/business_add_service">
-                    <td>
+        <h1 id="priceList">Delete Service 💅🏻</h1>
+        {% for service in services %}
+            <li>{{ service.serviceName }}</li>
+            <form method="post" action="/business_delete_service/{{ loop.index }}">
+                <input type="hidden" name="serviceName" value="{{ service.serviceName }}">
+                <button id="editService"><a>Delete</a></button>
+            </form>
+        {% endfor %}
+        <table>
+            <h1 id="priceList">New Service 💅🏻</h1>
+            <form method="post" action="/business_add_service">
+                <td>
 
-                        <input id="service2" name="newService"
-                               type="text" placeholder="service" required>
-                        <br></td>
-                    <td>
+                    <input id="service2" name="newService"
+                           type="text" placeholder="service" required>
+                    <br></td>
+                <td>
 
-                        <input id="price2" type="int" name="newprice"
-                               placeholder="price" min="40" max="200" required><br></td>
-                    <td>
+                    <input id="price2" type="int" name="newprice"
+                           placeholder="price" min="40" max="200" required><br></td>
+                <td>
 
-                        <button id="editService"><a>Add</a></button>
-                    </td>
+                    <button id="editService"><a>Add</a></button>
+                </td>
 
 
-                </form>
+            </form>
+        </table>
     </fieldset>
 
 

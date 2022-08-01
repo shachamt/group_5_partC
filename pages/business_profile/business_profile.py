@@ -269,6 +269,24 @@ def def_business_edit_service(line):
                            aboutMe=manicurists[0][8], phoneNum=manicurists[0][3], images=images, message=message,
                            rate=manicurists[0][9], ismani=session['isMani'])
 
+@business_profile.route('/business_delete_service/<line>', methods=['get', 'post'])
+def def_business_Delete_service(line):
+    duplicate = False
+    email = session['email']
+    service = "service" + line
+    current = "currentService" + line
+    price = "price" + line
+    DeleteSer = request.form['serviceName']
+    newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
+                               x_location='', y_location='')
+    newManicurist.DeleteService(DeleteSer, email)
+    message = "service successfully Deleted"
+    currentServices = newManicurist.getServices()
+    manicurists = newManicurist.getMyDetails()
+    images = newManicurist.getMyImages()
+    return render_template('business_edit.html', services=currentServices, name=manicurists[0][1],
+                           aboutMe=manicurists[0][8], phoneNum=manicurists[0][3], images=images, message=message,
+                           rate=manicurists[0][9], ismani=session['isMani'])
 
 @business_profile.route('/rating')
 def def_rating():

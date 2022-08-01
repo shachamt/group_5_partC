@@ -146,3 +146,6 @@ class manicurist:
         query = "INSERT INTO services(Email,serviceName,Price) VALUES ('%s','%s','%s')" % (email,service,newPrice)
         query_result = dbManager.commit(query)
 
+    def DeleteService(self,service,email):
+        query = "DELETE FROM services where serviceName='%s' and Email='%s' " % (service,email)
+        query_result = dbManager.commit(query)
