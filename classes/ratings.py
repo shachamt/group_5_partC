@@ -28,6 +28,8 @@ class Rate:
         for i in newlist1:
             sum= sum+ i[0]
             count= count +1
+        if count==0:
+            count=1
         avg=sum/count
         query = "update manicurist \
                             set TotalRate= '%s' \

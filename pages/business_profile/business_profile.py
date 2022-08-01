@@ -34,7 +34,6 @@ def def_business_profile_ByID(ID):
     email = newDynamic.getEmail()  # email of manicurist
     if email == 'null':
         return render_template('IDnotFound.html')
-    print(email)
     session['currentMani'] = email[0]
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
                                x_location='', y_location='')
@@ -209,8 +208,6 @@ def changepic4():
     if URL != '':
         image = images[3][0]
         for i in images:
-            print(i)
-            print(URL)
             if i[0] == URL:
                 message = "The picture is already exist"
                 return render_template('business_edit.html', services=users_list, name=manicurists[0][1],

@@ -33,7 +33,7 @@ class manicurist:
             self.x_location = x_location
             self.y_location = y_location
             self.aboutMe = 'Hello'
-            self.TotalRate = 0
+            self.TotalRate = 1
 
     def ex_username(self):
         query = 'select * from manicurist'

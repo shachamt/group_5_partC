@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block jsLink %}
+        <script defer src="../../../static/js/validation.js"></script>
     <script defer src="../../../static/js/general.js"></script>
     <script defer src="../../../static/js/GetLocation.js"></script>
     <script defer src="../../../static/js/SearchMani.js"></script>
-    <script defer src="../../../static/js/validation.js"></script>
+
 
 {% endblock %}
 {% block title %}Sign Up Manicurist{% endblock %}
@@ -28,7 +29,7 @@
                 <p></p>
 
                 <label for="telephone">Phone Number: </label>
-                <input type="number" name="telephone" id="telephone" class="inputs" required min="0"
+                <input type="number" name="telephone" id="telephone" class="inputs"  required min="0"
                        oninput="validity.valid||(value='');">
                 <p></p>
 
