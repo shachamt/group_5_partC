@@ -1,4 +1,3 @@
-
 //to show and hide the password of customer sign up
 
 function showPassword() {
@@ -11,9 +10,7 @@ function showPassword() {
         pass.type = "text";
         eye1.style.display = "inline";
         eye2.style.display = "none";
-    }
-
-    else {
+    } else {
         pass.type = "password";
         eye1.style.display = "none";
         eye2.style.display = "inline";
@@ -56,6 +53,11 @@ formCustomer.addEventListener('submit', (e) => {
         errorMani.innerText = messages.join(', ')
     }
 
+    var phoneno = /^\d{10}$/;
+    if (phone.value.match(phoneno)) {
+        messages.push('phone must contain 10 numbers')
+    }
+
 })
 
 // // validation for editing profile page
@@ -78,22 +80,22 @@ function checkeAllServices() {
         }
     }
 }
+
 function isValidData() {
     checkeAllServices();
     const numOfInvalid = document.getElementsByClassName('invalidInput').length;
     if (numOfInvalid > 0) {
         alert('Your details have not been updated successfully.Please fix the price list - if you are adding a service you have to add price too and the opposite');
         document.getElementsByClassName('invalidInput')[0].focus();
-    }
-    else {
+    } else {
         alert('Your details have been updated successfully ');
     }
 }
+
 function checkProperService(ServiceElement) {
     if (ServiceElement.value == '') {
         ServiceElement.className += " invalidInput";
-    }
-    else {
+    } else {
         ServiceElement.className = 'service';
     }
 }
@@ -102,8 +104,7 @@ function checkProperService(ServiceElement) {
 function checkProperPrice(priceElement) {
     if (priceElement.value == '') {
         priceElement.className += " invalidInput";
-    }
-    else {
+    } else {
         priceElement.className = 'price';
     }
 }

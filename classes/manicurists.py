@@ -121,10 +121,16 @@ class manicurist:
                        set serviceName= '%s' \
                        where Email='%s' and serviceName='%s';" % (newService, email, newCurrent)
         query_result = dbManager.commit(query)
+        query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
+            datetime.datetime.now(), self.Email, 'editProfile')
+        query_result = dbManager.commit(query)
 
     def updateServicePrice(self, newPrice, email, newCurrent):
         query = "update services \
                       set Price = '%s' where Email='%s' and serviceName='%s';" % (newPrice, email, newCurrent)
+        query_result = dbManager.commit(query)
+        query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
+            datetime.datetime.now(), self.Email, 'editProfile')
         query_result = dbManager.commit(query)
 
     def updateNamePrice(self, newService, newPrice, email, newCurrent):
@@ -133,19 +139,28 @@ class manicurist:
                                 ,Price='%s' \
                                 where Email='%s'and serviceName='%s';" % (newService, newPrice, email, newCurrent)
         query_result = dbManager.commit(query)
+        query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
+            datetime.datetime.now(), self.Email, 'editProfile')
+        query_result = dbManager.commit(query)
 
     def updateImage(self, image, URL):
         query = "update images \
                           set image = '%s' where image='%s';" % (URL, image)
         query_result = dbManager.commit(query)
+        query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
+            datetime.datetime.now(), self.Email, 'editProfile')
+        query_result = dbManager.commit(query)
 
     def AddService(self, newPrice, email, service):
-        print(email)
-        print(service)
-        print(newPrice)
         query = "INSERT INTO services(Email,serviceName,Price) VALUES ('%s','%s','%s')" % (email,service,newPrice)
+        query_result = dbManager.commit(query)
+        query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
+            datetime.datetime.now(), self.Email, 'editProfile')
         query_result = dbManager.commit(query)
 
     def DeleteService(self,service,email):
         query = "DELETE FROM services where serviceName='%s' and Email='%s' " % (service,email)
+        query_result = dbManager.commit(query)
+        query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
+            datetime.datetime.now(), self.Email, 'editProfile')
         query_result = dbManager.commit(query)

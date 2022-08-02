@@ -16,7 +16,8 @@ function showPosition(position) {
     y.innerHTML = "try me again";
     console.log(position);
 }
- //get location for manicutrist sign up
+
+//get location for manicutrist sign up
 function GetLocationMani() {
     if (navigator.geolocation) {
         console.log("in get location");
@@ -37,8 +38,6 @@ function showPosition(position) {
 }
 
 
-
-
 //to show and hide the password of manicurist sign up
 function showPassword() {
     var pass = document.getElementById("password");
@@ -50,9 +49,7 @@ function showPassword() {
         pass.type = "text";
         eye1.style.display = "inline";
         eye2.style.display = "none";
-    }
-
-    else {
+    } else {
         pass.type = "password";
         eye1.style.display = "none";
         eye2.style.display = "inline";
@@ -61,38 +58,43 @@ function showPassword() {
 }
 
 //validation for manicurist sign up
-    const lastName = document.getElementById("lastName")
-    const firstName = document.getElementById("firstName")
-    const password = document.getElementById("password")
-    const formMani = document.getElementById("SignUpManicuristForm")
-    const errorMani = document.getElementById("errorMani")
-    const email = document.getElementById("email")
-    const phone = document.getElementById("telephone")
+const lastName = document.getElementById("lastName")
+const firstName = document.getElementById("firstName")
+const password = document.getElementById("password")
+const formMani = document.getElementById("SignUpManicuristForm")
+const errorMani = document.getElementById("errorMani")
+const email = document.getElementById("email")
+const phone = document.getElementById("telephone")
 
-    formMani.addEventListener('submit', (e) => {
-        let messages = []
+formMani.addEventListener('submit', (e) => {
+    let messages = []
 
-        if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value))) {
-        messages.push ('Email is not valid')
-        }
+    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value))) {
+        messages.push('Email is not valid')
+    }
 
-        if(firstName.value.length <2) {
-            messages.push ('First name must be at least 2 characters')
-        }
+    if (firstName.value.length < 2) {
+        messages.push('First name must be at least 2 characters')
+    }
 
-        if(lastName.value.length <2) {
-            messages.push ('Last name must be at least 2 characters')
-        }
+    if (lastName.value.length < 2) {
+        messages.push('Last name must be at least 2 characters')
+    }
 
-        if(password.value.length <=6) {
-            messages.push ('Password must be loger than 6 characters')
-        }
+    if (password.value.length <= 6) {
+        messages.push('Password must be loger than 6 characters')
+    }
 
 
-        if (messages.length>0) {
-            e.preventDefault()
-            errorMani.innerText = messages.join (', ')
-        }
+    if (messages.length > 0) {
+        e.preventDefault()
+        errorMani.innerText = messages.join(', ')
+    }
 
-    })
+    var phoneno = /^\d{10}$/;
+    if (phone.value.match(phoneno)) {
+        messages.push('phone must contain 10 numbers')
+    }
+
+})
 
