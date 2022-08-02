@@ -291,4 +291,12 @@ def def_rating():
     email = session['email']
     s = Rate(session['currentMani'], email, newrate)
     s.add_rate()
-    return redirect('/homepage')
+    emailm=session['currentMani']
+    newManicurist = manicurist(emailm, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
+                               x_location='', y_location='')
+    currentServices = newManicurist.getServices()
+    manicurists = newManicurist.getMyDetails()
+    images = newManicurist.getMyImages()
+    return render_template('business_profile.html', services=currentServices, name=manicurists[0][1],
+                           aboutMe=manicurists[0][8], phoneNum=manicurists[0][3], images=images,
+                           rate=manicurists[0][9], ismani=session['isMani'])
