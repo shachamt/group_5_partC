@@ -17,7 +17,6 @@ class DynamicMani:
         cur_email = dbManager.fetch(query_for_Email)
         if cur_email==[]:
             self.email='null'
-            print(self.email)
         else:
             self.email=cur_email[0]
 

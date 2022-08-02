@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, session, jsonify, request, redirec
 import mysql.connector, requests
 import os
 from dotenv import load_dotenv
-
+from geopy.geocoders import Nominatim
 from classes.images import Image
 from classes.manicurists import manicurist
 
@@ -59,25 +59,30 @@ def def_sign_up_mani():
     password = request.form['password']
     x_location = request.form['Latitude']
     y_location = request.form['Longitude']
+
+    geolocator = Nominatim(user_agent="plzwork")
+    location = geolocator.reverse(f"{x_location},{y_location}", language='en', )
+    city=location.raw['address']['city']
+
     businessName = request.form['businessName']
     pic1=request.form['picture1']
     pic2=request.form['picture2']
     pic3=request.form['picture3']
     pic4=request.form['picture4']
-    loggedMani = manicurist(email, FirstName, LastName, PhoneNumber, password, businessName, x_location, y_location)
+    loggedMani = manicurist(email, FirstName, LastName, PhoneNumber, password, businessName, x_location, y_location,city)
     isExist = loggedMani.add_mani()
     if pic1.__eq__(pic2) |pic1.__eq__(pic3)|pic1.__eq__(pic4)|pic2.__eq__(pic3)|pic3.__eq__(pic4) | pic2.__eq__(pic4) :
         message="there is duplicate pictures please try again"
         return render_template('sign_up_mani.html', message=message)
-    im1=Image(pic1,email)
-    im2 = Image(pic2, email)
-    im3 = Image(pic3, email)
-    im4 = Image(pic4, email)
-    im1.addimage()
-    im2.addimage()
-    im3.addimage()
-    im4.addimage()
     if (isExist):
+        im1 = Image(pic1, email)
+        im2 = Image(pic2, email)
+        im3 = Image(pic3, email)
+        im4 = Image(pic4, email)
+        im1.addimage()
+        im2.addimage()
+        im3.addimage()
+        im4.addimage()
         session['email'] = email
         session['logedin'] = True
         session['isMani'] = True

@@ -1,5 +1,4 @@
 from classes.searches import Search
-from classes.manicurists import manicurist
 from flask import Blueprint, render_template, session, jsonify, request, redirect
 
 # sign_in blueprint definition
@@ -28,10 +27,7 @@ def def_search_mani_validation():
     newSearch = Search(clientEmail, X_location, Y_location, maxPrice)
     isExist = newSearch.add_search()
     list = newSearch.find_mani()
-    list = newSearch.find_mani()
-    print(list)
     images = newSearch.imeges()
-    print(images)
     message = newSearch.GetFind()
     if (message == 1):
         message="mani"

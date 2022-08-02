@@ -50,7 +50,6 @@ class Customer:
             query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
                 datetime.datetime.now(), self.Email, 'signUpCustomer')
             query_result = dbManager.commit(query)
-            print(query_result)
             return True
         return False
 

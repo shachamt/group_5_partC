@@ -32,7 +32,7 @@ def def_sign_in():
         session['logedin'] = True
         if newSign.isMani()==True: #manicurist
             session['isMani'] = True
-            loggedMani=manicurist(email=email,FirstName='',LastName='',PhoneNumber='',password='',businessName='',x_location='',y_location='')
+            loggedMani=manicurist(email=email,FirstName='',LastName='',PhoneNumber='',password='',businessName='',x_location='',y_location='',city='')
             session['email'] = email
             session['firstName'] = loggedMani.getFirstName()
             session['lastName'] = loggedMani.getLastName()

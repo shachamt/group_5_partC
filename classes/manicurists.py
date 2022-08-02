@@ -10,7 +10,7 @@ load_dotenv()
 
 
 class manicurist:
-    def __init__(self, email, FirstName, LastName, PhoneNumber, password, businessName, x_location, y_location):
+    def __init__(self, email, FirstName, LastName, PhoneNumber, password, businessName, x_location, y_location,city):
         self.Email = email
         if FirstName == '':
             query = "select * from manicurist where email='%s'" % self.Email
@@ -24,6 +24,7 @@ class manicurist:
             self.y_location = myDetails[0][7]
             self.aboutMe = myDetails[0][8]
             self.TotalRate = myDetails[0][9]
+            self.city=myDetails[0][10]
         else:
             self.FirstName = FirstName
             self.LastName = LastName
@@ -34,6 +35,7 @@ class manicurist:
             self.y_location = y_location
             self.aboutMe = 'Hello'
             self.TotalRate = 1
+            self.city=city
 
     def ex_usernameCu(self):
         query = 'select * from customers'
@@ -53,9 +55,9 @@ class manicurist:
 
     def add_mani(self):
         if self.ex_usernameCu() == True & self.ex_usernameMa():
-            query = "INSERT INTO manicurist(Email,FirstName,LastName,phoneNumber,password,businessName,X_location, Y_location,aboutMe,TotalRate) VALUES ('%s', '%s', '%s', '%s','%s','%s', '%s','%s','%s','%s')" % (
+            query = "INSERT INTO manicurist(Email,FirstName,LastName,phoneNumber,password,businessName,X_location, Y_location,aboutMe,TotalRate,city) VALUES ('%s', '%s', '%s', '%s','%s','%s', '%s','%s','%s','%s','%s')" % (
                 self.Email, self.FirstName, self.LastName, self.phoneNumber, self.password, self.businessName,
-                self.x_location, self.y_location, self.aboutMe, self.TotalRate)
+                self.x_location, self.y_location, self.aboutMe, self.TotalRate,self.city)
             query_result = dbManager.commit(query)
             query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
                 datetime.datetime.now(), self.Email, 'signUpManicurist')
@@ -91,6 +93,9 @@ class manicurist:
 
     def getTotalRate(self):
         return self.TotalRate
+
+    def getCity(self):
+        return self.city
 
     def setAbout(self, about):
         self.aboutMe = about

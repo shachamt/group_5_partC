@@ -29,7 +29,8 @@
 {% endblock %}
 {% block up %}
     <fieldset class="MyBusinessField">
-        <h1>About {{ name }}:</h1><br>
+        <h1>About {{ name | capitalize }}:</h1><br>
+        <h2>{{ name | capitalize}}'s clinic is in {{ city }} </h2>
         <p> {{ aboutMe }}</p>
     </fieldset>
 {% endblock %}

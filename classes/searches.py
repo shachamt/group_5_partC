@@ -22,16 +22,14 @@ class Search:
         query = "INSERT INTO logs(dt,Email,actionLogs) VALUES ('%s', '%s', '%s')" % (
             datetime.datetime.now(), self.clientEmail, 'search')
         query_result = dbManager.commit(query)
-        print(query_result)
 
 
     def find_mani(self):
-        query1 = f'select manicurist.Email,manicurist.FirstName,manicurist.X_location, dynamicmani.id from manicurist  JOIN dynamicmani ON manicurist.Email=dynamicmani.Email where X_location+0.019<= "%s" '% self.X_location
+        query1 = f'select manicurist.Email,manicurist.FirstName,manicurist.X_location,manicurist.city, dynamicmani.id from manicurist  JOIN dynamicmani ON manicurist.Email=dynamicmani.Email where X_location+0.019<= "%s" '% self.X_location
         mani_list1 = dbManager.fetch(query1)
-        query2 = f'select manicurist.Email,manicurist.FirstName,manicurist.X_location, dynamicmani.id from manicurist  JOIN dynamicmani ON manicurist.Email=dynamicmani.Email where X_location-0.019<= "%s" '% self.X_location
+        query2 = f'select manicurist.Email,manicurist.FirstName,manicurist.X_location,manicurist.city, dynamicmani.id from manicurist  JOIN dynamicmani ON manicurist.Email=dynamicmani.Email where X_location-0.019<= "%s" '% self.X_location
         mani_list2 = dbManager.fetch(query2)
         for j in mani_list2:
-            print(mani_list1.count(j))
             if mani_list1.count(j)==0:
                 mani_list1.append(j)
         query3 = f'select Email,price from services where price<= "%s" group by Email ' % self.maxPrice
@@ -43,7 +41,7 @@ class Search:
                     newlist.append(i)
 
         if len(newlist)==0:
-            query = f'select manicurist.Email,manicurist.FirstName,manicurist.X_location, dynamicmani.id from manicurist  JOIN dynamicmani ON manicurist.Email=dynamicmani.Email'
+            query = f'select manicurist.Email,manicurist.FirstName,manicurist.X_location,manicurist.city, dynamicmani.id from manicurist  JOIN dynamicmani ON manicurist.Email=dynamicmani.Email'
             newlist = dbManager.fetch(query)
             self.Find=1
 

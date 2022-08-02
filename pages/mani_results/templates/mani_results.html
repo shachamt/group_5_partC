@@ -8,7 +8,7 @@
     <main id="resultsContainer">
         {% if message %}
             <center>
-            <h2>We couldn't find manicurists with this criteria , so here is all our manicurists</h2>
+                <h2>We couldn't find manicurists with this criteria , so here is all our manicurists</h2>
             </center>
         {% else %}
             <h3>The best manicurists for you </h3>
@@ -22,6 +22,8 @@
                         <a href=/business_profile/{{ i.id }}><img src={{ images[i.id].image }} alt="Italian page link"
                             class="link"></a>
                         <span class="spanStyle"> {{ i.FirstName }}</span>
+                        <span style="color: crimson" class="spanStyle"> {{ i.city }}</span>
+
 
                     </div>
                 {% endfor %}
@@ -32,6 +34,8 @@
                         <a href=/business_profile/{{ i.id }}><img src={{ images[i.id].image }}  alt="Italian page link"
                             class="link"></a>
                         <span class="spanStyle">{{ i.FirstName }}</span>
+                        <span style="color: crimson" class="spanStyle">{{ i.city }}</span>
+
 
                     </div>
                 {% endfor %}

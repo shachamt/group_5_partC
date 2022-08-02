@@ -18,14 +18,15 @@ def def_business_profile():
         return render_template('noProfileMessage.html')
     email = session['email']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     users_list = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
+    city= newManicurist.getCity()
 
     return render_template('business_profile.html', services=users_list, name=manicurists[0][1],
                            aboutMe=manicurists[0][8], phoneNum=manicurists[0][3], images=images, rate=manicurists[0][9],
-                           ismani=session['isMani'])
+                           ismani=session['isMani'],city=city)
 
 
 @business_profile.route('/business_profile/<int:ID>')
@@ -36,28 +37,30 @@ def def_business_profile_ByID(ID):
         return render_template('IDnotFound.html')
     session['currentMani'] = email[0]
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     users_list = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
+    city= newManicurist.getCity()
     if session['isMani'] == True:
         return render_template('noProfileMessage.html')
     return render_template('business_profile.html', services=users_list, name=manicurists[0][1],
                            aboutMe=manicurists[0][8], phoneNum=manicurists[0][3], images=images, rate=manicurists[0][9],
-                           ismani=session['isMani'])
+                           ismani=session['isMani'],city=city)
 
 
 @business_profile.route('/business_edit')
 def def_business_edit():
     email = session['email']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     users_list = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
+    city= newManicurist.getCity()
     return render_template('business_edit.html', services=users_list, name=manicurists[0][1],
                            aboutMe=manicurists[0][8], phoneNum=manicurists[0][3], images=images, rate=manicurists[0][9],
-                           ismani=session['isMani'])
+                           ismani=session['isMani'],city=city)
 
 
 @business_profile.route('/business_edit_about', methods=['get', 'post'])
@@ -65,7 +68,7 @@ def def_business_edit_AboutMe():
     email = session['email']
     newAbout = request.form['feedText']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     users_list = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
@@ -86,7 +89,7 @@ def newservice():
     servicen = request.form['newService']
     price = request.form['newprice']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     currentServices = newManicurist.getServices()
     for service in currentServices:
         if service.serviceName == servicen:
@@ -110,7 +113,7 @@ def changepic1():
     URL = request.args['pic1']
     email = session['email']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     users_list = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
@@ -140,7 +143,7 @@ def changepic2():
     URL = request.args['pic2']
     email = session['email']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     users_list = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
@@ -170,7 +173,7 @@ def changepic3():
     URL = request.args['pic3']
     email = session['email']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     users_list = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
@@ -200,7 +203,7 @@ def changepic4():
     URL = request.args['pic4']
     email = session['email']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     users_list = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
@@ -236,7 +239,7 @@ def def_business_edit_service(line):
     newService = request.form[service]
     newPrice = request.form[price]
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     currentServices = newManicurist.getServices()
     for service in currentServices:
         if service.serviceName == newService:
@@ -275,7 +278,7 @@ def def_business_Delete_service(line):
     price = "price" + line
     DeleteSer = request.form['serviceName']
     newManicurist = manicurist(email, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     newManicurist.DeleteService(DeleteSer, email)
     message = "service successfully Deleted"
     currentServices = newManicurist.getServices()
@@ -293,10 +296,11 @@ def def_rating():
     s.add_rate()
     emailm=session['currentMani']
     newManicurist = manicurist(emailm, FirstName='', LastName='', PhoneNumber='', password='', businessName='',
-                               x_location='', y_location='')
+                               x_location='', y_location='',city='')
     currentServices = newManicurist.getServices()
     manicurists = newManicurist.getMyDetails()
     images = newManicurist.getMyImages()
+    city= newManicurist.getCity()
     return render_template('business_profile.html', services=currentServices, name=manicurists[0][1],
                            aboutMe=manicurists[0][8], phoneNum=manicurists[0][3], images=images,
-                           rate=manicurists[0][9], ismani=session['isMani'])
+                           rate=manicurists[0][9], ismani=session['isMani'],city=city)
