@@ -1,0 +1,122 @@
+CREATE TABLE CUSTOMERS
+(
+    Email       Varchar(40) PRIMARY KEY NOT NULL,
+    FirstName   Varchar(20)             NOT NULL,
+    LastName    Varchar(20)             NOT NULL,
+    phoneNumber varchar(10)             NOT NULL,
+    password    Varchar(16)             NOT NULL,
+    CONSTRAINT Ck_FormatEmail1 CHECK (Email LIKE '%@%.%'),
+    CONSTRAINT Ck_LengthPassword CHECK (length(Password) >= 6)
+);
+
+
+CREATE TABLE Manicurist
+(
+    Email        Varchar(40)     primary key         NOT NULL,
+    FirstName    Varchar(20)             NOT NULL,
+    LastName     Varchar(20)             NOT NULL,
+    phoneNumber  varchar(10)             NOT NULL,
+    password     Varchar(16)             NOT NULL,
+    businessName varchar(20)             NOT NULL,
+    X_location   float                   NOT NULL,
+    Y_location   float                   NOT NULL,
+    aboutMe varchar(400) not null,
+    TotalRate    float NOT NULL,
+    City varchar(50) NOT NULL,
+    CONSTRAINT Ck_FormatEmail_MA CHECK (Email LIKE '%@%.%'),
+    CONSTRAINT Ck_LengthPassword_MA CHECK (length(password) >= 6),
+    CONSTRAINT ck_locationX_Manicurist CHECK (X_location > 0),
+    CONSTRAINT ck_locationY_Manicurist CHECK (Y_location > 0)
+);
+create table dynamicMani(
+        id int auto_increment PRIMARY KEY   NOT NULL,
+        Email        Varchar(40)   NOT NULL ,
+        CONSTRAINT Ck_FormatEmail_DY CHECK (Email LIKE '%@%.%')
+);
+
+CREATE TABLE logs
+(
+    dt    datetime  NOT NULL,
+    Email       Varchar(40)             NOT NULL,
+    actionLogs      varchar(20),
+    constraint pk_logs primary key (dt, Email),
+    CONSTRAINT Ck_type_searches CHECK (actionLogs IN ('signIn','search','rate','editProfile','signUpManicurist',
+                                                 'signUpCustomer')));
+CREATE TABLE searches
+(
+    dt    datetime  NOT NULL,
+    clientEmail Varchar(40)             NOT NULL,
+    X_location  float,
+    Y_location  float,
+    maxPrice    int,
+    CONSTRAINT pk_searches primary key (dt, clientEmail),
+    CONSTRAINT ck_locationX_searches CHECK (X_location > 0),
+    CONSTRAINT ck_locationY_searches CHECK (Y_location > 0),
+    CONSTRAINT ck_maxPrice CHECK (maxPrice >= 40 and maxPrice <= 200 )
+
+);
+
+CREATE TABLE services
+(
+    Email       Varchar(40) NOT NULL,
+    serviceName varchar(100) NOT NULL,
+    Price       int         NOT NULL,
+    CONSTRAINT pk_searches primary key (serviceName, Email),
+    CONSTRAINT ck_maxPrice2 CHECK (Price >= 40 and Price <= 200 )
+);
+
+CREATE TABLE rates
+(
+    dt        datetime  NOT NULL,
+    manicuristEmail Varchar(40)             NOT NULL,
+    clientEmail     Varchar(40)             NOT NULL,
+    rate            int                     NOT NULL,
+    CONSTRAINT pk_searches primary key (manicuristEmail, clientEmail, dt),
+    CONSTRAINT ck_rate CHECK (rate >= 1 and rate <= 5 )
+
+);
+CREATE TABLE images
+(
+    image  nvarchar(500)   NOT NULL,
+    manicuristEmail Varchar(40)    NOT NULL,
+    CONSTRAINT pk_images primary key (manicuristEmail,image)
+
+);
+
+ALTER TABLE 	images	ADD CONSTRAINT   	Fk_images_email
+		FOREIGN KEY (manicuristEmail)  	REFERENCES  Manicurist (Email);
+
+ALTER TABLE 	searches 	ADD CONSTRAINT   	Fk_searches_email
+		FOREIGN KEY (clientEmail)  	REFERENCES  CUSTOMERS (Email);
+
+ALTER TABLE 	dynamicMani 	ADD CONSTRAINT   	Fk_dynamicMani
+		FOREIGN KEY (Email)  	REFERENCES  Manicurist (Email);
+
+ALTER TABLE 	services 	ADD CONSTRAINT   	Fk_services_email
+		FOREIGN KEY (Email)  	REFERENCES  Manicurist (Email);
+
+ALTER TABLE 	rates 	ADD CONSTRAINT   	Fk_rates_email_cu
+		FOREIGN KEY (clientEmail)  	REFERENCES  CUSTOMERS (Email);
+
+ALTER TABLE 	rates 	ADD CONSTRAINT   	Fk_rates_email_mu
+		FOREIGN KEY (manicuristEmail)  	REFERENCES  Manicurist (Email);
+
+
+
+
+
+drop table images;
+
+drop table logs;
+
+drop table rates;
+
+drop table searches;
+
+drop table customers;
+
+drop table services;
+
+drop table manicurist;
+
+
