@@ -35,7 +35,15 @@ class manicurist:
             self.aboutMe = 'Hello'
             self.TotalRate = 1
 
-    def ex_username(self):
+    def ex_usernameCu(self):
+        query = 'select * from customers'
+        users_list = dbManager.fetch(query)
+        for customers in users_list:
+            if (customers[0] == self.Email):
+                return False
+        return True
+
+    def ex_usernameMa(self):
         query = 'select * from manicurist'
         users_list = dbManager.fetch(query)
         for customers in users_list:
@@ -44,7 +52,7 @@ class manicurist:
         return True
 
     def add_mani(self):
-        if self.ex_username() == True:
+        if self.ex_usernameCu() == True & self.ex_usernameMa():
             query = "INSERT INTO manicurist(Email,FirstName,LastName,phoneNumber,password,businessName,X_location, Y_location,aboutMe,TotalRate) VALUES ('%s', '%s', '%s', '%s','%s','%s', '%s','%s','%s','%s')" % (
                 self.Email, self.FirstName, self.LastName, self.phoneNumber, self.password, self.businessName,
                 self.x_location, self.y_location, self.aboutMe, self.TotalRate)

@@ -12,6 +12,7 @@ class Search:
         self.X_location = X_location
         self.Y_location = Y_location
         self.maxPrice = maxPrice
+        self.Find=0
 
 
     def add_search(self):
@@ -44,6 +45,8 @@ class Search:
         if len(newlist)==0:
             query = f'select manicurist.Email,manicurist.FirstName,manicurist.X_location, dynamicmani.id from manicurist  JOIN dynamicmani ON manicurist.Email=dynamicmani.Email'
             newlist = dbManager.fetch(query)
+            self.Find=1
+
 
         return newlist
 
@@ -51,3 +54,6 @@ class Search:
         query = f'select image from images'
         images = dbManager.fetch(query)
         return images
+
+    def GetFind(self):
+        return self.Find

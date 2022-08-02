@@ -26,7 +26,7 @@ class Customer:
             self.phoneNumber = phoneNumber
             self.password = password
 
-    def ex_username(self):
+    def ex_usernameCu(self):
         query = 'select * from customers'
         users_list = dbManager.fetch(query)
         for customers in users_list:
@@ -34,8 +34,16 @@ class Customer:
                 return False
         return True
 
+    def ex_usernameMa(self):
+        query = 'select * from manicurist'
+        users_list = dbManager.fetch(query)
+        for customers in users_list:
+            if (customers[0] == self.Email):
+                return False
+        return True
+
     def add_customer(self):
-        if (self.ex_username() == True):
+        if self.ex_usernameCu() == True & self.ex_usernameMa():
             query = "INSERT INTO customers(Email,FirstName,LastName,phoneNumber,password) VALUES ('%s', '%s', '%s', '%s','%s')" % (
                 self.Email, self.FirstName, self.LastName, self.phoneNumber,  self.password)
             query_result = dbManager.commit(query)
